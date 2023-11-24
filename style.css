@@ -1,0 +1,13 @@
+*{
+    font-family: sans-serif;
+}
+
+body{
+    background: tomato;
+    overflow: hidden;
+}
+
+video{
+    position: absolute;
+    pointer-events: none;
+}
