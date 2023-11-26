@@ -25,7 +25,7 @@ window.localStorage.setItem('isPeeking', 'no')
 class Mario{
 
     draw(){
-        img.src = "assets/mario.webp"
+        img.src = "./assets/mario.webp"
         img.id="mario"
     }
 
@@ -43,14 +43,14 @@ class Mario{
 
 class Boo{
     draw(){
-        img.src = "assets/boo.png"
+        img.src = "./assets/boo.png"
     }
 
     hide(){
-        img.src = 'assets/boo.png'
+        img.src = './assets/boo.png'
         if(window.localStorage.getItem('isPeeking') === 'yes' ){
             console.log('uai')
-            img.src = 'assets/boo_hide.webp'
+            img.src = './assets/boo_hide.webp'
         }
     }
 }
