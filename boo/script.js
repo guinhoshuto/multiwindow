@@ -28,7 +28,7 @@ class Mario{
         this.y;
         this.distance;
         this.screenId;
-        this.imgSrc = './assets/mario.webp'
+        this.imgSrc = '/boo/assets/mario.webp'
     }
 
     draw(){
@@ -40,33 +40,38 @@ class Mario{
         img.addEventListener('mouseover', () => {
             window.localStorage.setItem('isPeeking', 'yes')
             img.setAttribute('style', 'transform: scale(-1, 1)')
-        })
+        });
         img.addEventListener('mouseleave', () => {
             window.localStorage.setItem('isPeeking', 'no')
             img.setAttribute('style', 'transform: scale(1, 1)')
-        })
+        });
     }
 }
 
 class Boo{
     constructor(){
-        this.x;
-        this.y;
-        this.distance;
-        this.screenId;
-        this.imgSrc = './assets/boo.png'
-        this.hideImgSrc = './assets/boo_hide.webp'
+        this.x
+        this.y
+        this.distance
+        this.screenId
+        this.imgSrc = 'boo.png'
+        this.hideImgSrc = 'boo_hide.webp'
     }
 
     draw(){
-        img.src = this.imgSrc;
+        img.src = `/boo/assets/${this.imgSrc}`;
+    }
+
+    isMarioPeeking(){
+        if(window.localStorage.getItem('isPeeking') === 'yes' ){
+            this.hide()
+        } else {
+            img.src = `/boo/assets/${this.imgSrc}`;
+        }
     }
 
     hide(){
-        img.src = this.imgSrc;
-        if(window.localStorage.getItem('isPeeking') === 'yes' ){
-            img.src = this.hideImgSrc;
-        }
+        img.src = `/boo/assets/${this.hideImgSrc}`;
     }
 }
 
@@ -78,7 +83,7 @@ if(q.has('c')){
     } else if(q.get('c') === 'boo'){
         const boo = new Boo()
         boo.draw()
-        setInterval(boo.hide, 10)
+        setInterval(boo.isMarioPeeking, 10)
     }
     body.appendChild(img)
 }
