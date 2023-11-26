@@ -1,4 +1,3 @@
-const video = document.querySelector('video')
 const info = document.querySelector('#info')
 const body = document.querySelector('body')
 
@@ -12,7 +11,7 @@ function getScreenId(){
 
 const screenId = `screen-${getScreenId()}`
 
-function screenInfo(){
+export function screenInfo(){
     const info = JSON.parse(window.localStorage.getItem(screenId))
     return `
         screenX: ${info.screenX}<br/>
@@ -41,16 +40,6 @@ function setScreenDetails(){
     // console.log(screenInfo())
 }
 
-function populateWebcam(){
-    navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
-        if(!video) return
-        video.width = window.screen.availWidth
-        video.height = window.screen.availHeight
-        video.srcObject = stream
-        video.play();
-    })
-}
-
 function removeOld(){
     const screens = Object.entries(window.localStorage)
         .filter(([key]) => key.startsWith('screen-'))
@@ -62,12 +51,8 @@ function removeOld(){
     }
 }
 
-function updateScreen(){
-    video.setAttribute('style', `transform: translate(-${window.screenX}px, -${window.screenY}px)`)
-    // body.setAttribute('style', `background: rgb(${window.screenX}, ${window.screenY}, ${window.height})`)
-}
 
-setInterval(setScreenDetails, 10)
-setInterval(removeOld, 10)
-setInterval(updateScreen, 10)
-populateWebcam()
+export function start(){
+    setInterval(setScreenDetails, 10)
+    setInterval(removeOld, 10)
+}

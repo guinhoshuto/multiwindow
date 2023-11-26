@@ -1,0 +1,10 @@
+*{
+    font-family: sans-serif;
+    color: white;
+}
+
+body{
+    background: tomato;
+    overflow: hidden;
+    padding: 20px;
+}
