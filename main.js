@@ -14,6 +14,7 @@ const screenId = `screen-${getScreenId()}`
 export function screenInfo(){
     const info = JSON.parse(window.localStorage.getItem(screenId))
     return `
+        id: ${screenId}<br/>
         screenX: ${info.screenX}<br/>
         screenY: ${info.screenY}<br/>
         screenW: ${info.screenW}<br/>

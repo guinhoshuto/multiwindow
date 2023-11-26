@@ -1,4 +1,4 @@
-import { start, screenInfo } from '../main.js'
+import { start, screenInfo } from '/main.js'
 
 const startBtn = document.querySelector("#start")
 const q = new URLSearchParams(window.location.search);
@@ -23,9 +23,16 @@ startBtn.addEventListener("click", () => {
 
 window.localStorage.setItem('isPeeking', 'no')
 class Mario{
+    constructor(){
+        this.x;
+        this.y;
+        this.distance;
+        this.screenId;
+        this.imgSrc = './assets/mario.webp'
+    }
 
     draw(){
-        img.src = "./assets/mario.webp"
+        img.src = this.imgSrc;
         img.id="mario"
     }
 
@@ -42,15 +49,23 @@ class Mario{
 }
 
 class Boo{
+    constructor(){
+        this.x;
+        this.y;
+        this.distance;
+        this.screenId;
+        this.imgSrc = './assets/boo.png'
+        this.hideImgSrc = './assets/boo_hide.webp'
+    }
+
     draw(){
-        img.src = "./assets/boo.png"
+        img.src = this.imgSrc;
     }
 
     hide(){
-        img.src = './assets/boo.png'
+        img.src = this.imgSrc;
         if(window.localStorage.getItem('isPeeking') === 'yes' ){
-            console.log('uai')
-            img.src = './assets/boo_hide.webp'
+            img.src = this.hideImgSrc;
         }
     }
 }
