@@ -9,7 +9,7 @@ function getScreenId(){
     return existingScreens.at(-1) + 1 || 1
 }
 
-const screenId = `screen-${getScreenId()}`
+export const screenId = `screen-${getScreenId()}`
 
 export function screenInfo(){
     const info = JSON.parse(window.localStorage.getItem(screenId))
@@ -25,8 +25,8 @@ export function screenInfo(){
     `
 }
 
-function setScreenDetails(){
-    const windowDetails = {
+export function getScreenDetails(){
+    return  {
         screenX: window.screenX,
         screenY: window.screenY,
         screenW: window.screen.availWidth,
@@ -35,10 +35,13 @@ function setScreenDetails(){
         height: window.outerHeight,
         updated: Date.now()
     }
+}
+
+function setScreenDetails(){
+    const windowDetails = getScreenDetails()
     window.localStorage.setItem(screenId, JSON.stringify( windowDetails))
     info.innerHTML = screenInfo();
-    console.log(window.localStorage.getItem(screenId))
-    // console.log(screenInfo())
+    // console.log(window.localStorage.getItem(screenId))
 }
 
 function removeOld(){
